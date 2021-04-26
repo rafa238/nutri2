@@ -1,0 +1,23 @@
+		<%- include("templates/default3") %>
+		<div class="container-fluid">
+	    <div class = "card-columns">
+	    		<% for (var i = 0; i < tipoAli.length; i++) { %>
+					<div class="card">
+	                    <img class="card-img-top" src="images/<%=tipoAli[i].idTipoA%>.jpg" alt="Card image cap">
+	                    <div class="card-body">
+	                        <h5 class="card-title"><%=tipoAli[i].descTiA%></h5>
+	                        <p class="card-text"><%=tipoAli[i].descTiA%></p>
+	                        <a href="/Ver/<%=tipoAli[i].idTipoA%>" class="btn btn-primary">Ver</a>
+	                    </div>
+	                </div>
+				<% } %>
+                
+            </div>	
+        </div> 
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

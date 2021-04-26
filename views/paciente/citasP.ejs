@@ -1,0 +1,35 @@
+        <%- include("../templates/default2") %>
+        <div class="container-fluid">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">idCita</th>
+                            <th scope="col">Nombre del Nutriologo</th>
+                            <th scope="col">Apellido del Nutriologo</th>
+                            <th scope="col">Correo del Nutriologo</th>
+                            <th scope="col">Fecha de la Cita</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% for (var i = 0; i < citas.length; i++) { %>
+                            <tr>
+                                <td> <%= citas[i].idCita %> </td>
+                                <td> <%= citas[i].nombre %> </td>
+                                <td> <%= citas[i].apellidoP %> </td>
+                                <td> <%= citas[i].email %> </td>
+                                <td> <%= citas[i].fechaHora %> </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

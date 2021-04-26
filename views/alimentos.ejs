@@ -1,0 +1,33 @@
+		<%- include("templates/default3") %>
+		<div class="container-fluid">
+	    <div class = "card-columns">
+	    		<% for (var i = 0; i < alimentos.length; i++) { %>
+					<div class="card border-success ">
+                        <div class="card-header bg-transparent border-success"><%= alimentos[i].descTiA%></div>
+                        <div class="card-body text-success">
+                            <h5 class="card-title"><%= alimentos[i].nombreA%></h5>
+                            <p class="card-text"><%= alimentos[i].descri%></p>
+                        </div>
+                        <div class="card-footer bg-transparent border-success">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" style="background: none">Calorias: <%= alimentos[i].calorias%> Kcal/100gr</li>
+                                <li class="list-group-item" style="background: none">Proteinas: <%=alimentos[i].proteinas %> gr/100gr</li>
+                                <li class="list-group-item" style="background: none">Hidratos: <%= alimentos[i].hidratos%> gr/100gr</li>
+                                <li class="list-group-item" style="background: none">Grasas: <%= alimentos[i].grasas%> gr/100gr</li>
+                                <li class="list-group-item" style="background: none">Índice Glucemico: <%= alimentos[i].indiceG%></li>
+                                <li class="list-group-item" style="background: none">Sales Minerales: <%= alimentos[i].salesMine%></li>
+                                <li class="list-group-item" style="background: none">Vitaminas: <%= alimentos[i].vitamins%></li>
+                            </ul>
+                        </div>
+                    </div>
+				<% } %>
+                
+            </div>	
+        </div> 
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/jquery.scrolly.min.js"></script>
+        <script src="/assets/js/skel.min.js"></script>
+        <script src="/assets/js/util.js"></script>
+        <script src="/assets/js/main.js"></script>
+    </body>
+</html>

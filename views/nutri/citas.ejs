@@ -1,0 +1,134 @@
+		<%- include("../templates/default2") %>
+		<div class="container-fluid">
+			<% if(errRCita.length > 0){ %>
+	            <div class="alert alert-danger" role="alert">
+	                <%= errRCita %>
+	            </div>
+	        <%  } %>
+	        <% if(exitoCita.length > 0){ %>
+	            <div class="alert alert-success" role="alert">
+	                <%= exitoCita %>
+	            </div>
+	        <%  } %>	
+            <div class="row">
+                <div class="col">
+                	<div class="table-responsive-sm">
+                		<table class="table table-sm">
+	                        <thead>
+	                            <tr>
+	                                <th scope="col">idPaciente</th>
+	                                <th scope="col">Nombre</th>
+	                                <th scope="col">Apellido</th>
+	                                <th scope="col">E-Mail</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            <% for (var i = 0; i < pacientes.length; i++) { %>
+									<tr>
+										<td> <%= pacientes[i].idPaciente %> </td>
+										<td> <%= pacientes[i].nombre %> </td>
+										<td> <%= pacientes[i].apellidoP %> </td>
+										<td> <%= pacientes[i].email %> </td>
+									</tr>
+								<% } %>
+	                        </tbody>
+	                    </table>
+                	</div>
+                    
+                </div>
+                <div class="col">
+                    <form action="/Nutriologo/RegCita" method="post">
+                        <div class="form-group">
+                            <input type="text" placeholder="Id del Paciente" id="idP" name="idPaciente" required/>
+                            
+                        </div>
+                    
+                        <div class="form-group">
+                            <input type='text' id='fechaHora' name="fechaHora" data-date-format="yyyy/mm/dd" onkeypress="des()" maxlength="19" placeholder="Fecha y Hora de la Cita" required/>
+                            <script>
+                                // Create start date
+                                var start = new Date(),
+                                        prevDay,
+                                        startHours = 9;
+
+                                // 09:00 AM
+                                start.setHours(9);
+                                start.setMinutes(0);
+
+                                // If today is Saturday or Sunday set 10:00 AM
+                                if ([6, 0].indexOf(start.getDay()) !== -1) {
+                                    start.setHours(10);
+                                    startHours = 10;
+                                }
+
+                                $('#fechaHora').datepicker({
+                                    timepicker: true,
+                                    language: 'es',
+                                    startDate: start,
+                                    minDate: new Date(),
+                                    minHours: startHours,
+                                    maxHours: 18,
+                                    onSelect: function (fd, d, picker) {
+                                        // Do nothing if selection was cleared
+                                        if (!d) return;
+
+                                        var day = d.getDay();
+
+                                        // Trigger only if date is changed
+                                        if (prevDay !== undefined && prevDay === day) return;
+                                        prevDay = day;
+
+                                        // If chosen day is Saturday or Sunday when set
+                                        // hour value for weekends, else restore defaults
+                                        if (day === 6 || day === 0) {
+                                            picker.update({
+                                                minHours: 10,
+                                                maxHours: 16
+                                            });
+                                        } else {
+                                            picker.update({
+                                                minHours: 9,
+                                                maxHours: 18
+                                            });
+                                        }
+                                    }
+                                })
+                            </script>
+                        </div>
+                        <input type="submit" name="button" id="btn">
+                    </form>
+                </div>
+                
+                <div class="col">
+                	<div class="table-responsive-sm">
+                		<table class="table table-sm">
+	                        <thead>
+	                            <tr>
+	                                <th scope="col">idCita</th>
+	                                <th scope="col">idPaciente</th>
+	                                <th scope="col">Fecha y Hora</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            <% for (var i = 0; i < citas.length; i++) { %>
+									<tr>
+										<td> <%= citas[i].idCita %> </td>
+										<td> <%= citas[i].idPaciente %> </td>
+										<td> <%= citas[i].fechaHora %> </td>
+									</tr>
+								<% } %>
+	                        </tbody>
+	                    </table>
+                	</div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!-- Header -->
+	<header id="header">
+        <% if(!isAuthenticated){ %>
+				<a href="/" class="logo"><strong>Nutri2</strong> por EFFUSE</a>
+		<%	} %>
+        <% if(isAuthenticated && (user.imc === null) && (user.tmb === null) && (user.idTiU === 2)){ %>
+        	<a href="/Paciente" class="logo"><strong>Bienvenid@ <%= user.nombre %></strong></a>
+        <%	} %>
+        <% if(isAuthenticated && !(user.imc === null) && !(user.tmb === null)  && (user.idTiU === 2)){ %>
+        	<a href="/Paciente" class="logo"><strong>Bienvenid@ <%= user.nombre %> IMC: <%= user.imc%> TMB: <%= user.tmb%> calorias</strong></a>
+        <%	} %>
+        <% if(isAuthenticated && user.idTiU === 1){ %>
+        	<a href="/Nutriologo" class="logo"><strong>Bienvenid@ <%= user.nombre %></strong></a>
+        <%	} %>
+		<nav>
+			<a href="#menu">Menu</a>
+		</nav>
+	</header>
+
+<!-- Nav -->
+	<nav id="menu">
+		<ul class="links">
+			<% if(!isAuthenticated){ %>
+				<li><a href="/">Home</a></li>
+	            <li>
+	            	<a href="#" id="a1">Calculadoras</a>
+	            	<ul id="ul1" style="display: none">
+	            		<li><a href="#">Calcula tu Indice de Masa Corporal (IMC)</a></li>
+	            		<li><a href="#">Calcula tu Tasa Metabolica Basal (TMB)</a></li>	
+	            	</ul>
+	            </li>
+
+	            <li><a href="/VerAlimentos">Alimentos</a></li>
+	            <li><a href="/Login">Iniciar Sesion</a></li>
+			<%	} %>
+
+            <% if(isAuthenticated && user.idTiU == 2){ %>
+            	<li><a href="/Paciente">Home de <%= user.nombre %></a></li>
+	            <li><a href="/PacienteUpdate">Actualizar datos</a></li>
+	            <li><a href="/VerAlimentos">Alimentos</a></li>
+	            <li><a href="/PacienteCitas">Citas</a></li>
+	            <li><a href="/Paciente/Logout">Cerrar Sesion</a></li>
+            <%	} %>
+
+            <% if(isAuthenticated && user.idTiU == 1){ %>
+            	<li><a href="/Nutriologo">Home de <%= user.nombre %></a></li>
+	            <li><a href="/Alimentos">Agregar Alimento</a></li>
+	            <li><a href="/Citas">Citas</a></li>
+	            <li><a href="/Paciente/Logout">Cerrar Sesion</a></li>
+            <%	} %>
+		</ul>
+	</nav>

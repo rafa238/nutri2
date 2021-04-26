@@ -1,0 +1,71 @@
+		<%- include("../templates/default2") %>
+		<div class="container mt-5">
+            <div class="row">
+                <div class="col-md-5 offset-md-3 card">
+                    <h5 class="card-header">Actualiza tus datos <%= pacient.nombre %></h5>
+                    <div class="card-body">
+                        <form action="/update/" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="nombre" placeholder="Nombre" value="<%= pacient.nombre %>" onkeypress="texto()" class="form-control" autofocus required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="app" placeholder="Apellido Paterno" value="<%= pacient.apellidoP %>" onkeypress="texto()" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="apm" placeholder="Apellido Materno" value="<%= pacient.apellidoM %>" onkeypress="texto()" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="tel" placeholder="Telefono" value="<%= pacient.tel %>" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="uName" placeholder="Username" value="<%= pacient.userName %>" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="pass" placeholder="Password" class="form-control" maxlength="16" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="mail" placeholder="E-Mail" value="<%= pacient.email %>" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Fecha de Cumpleaños" name="fechaC" value="<%= pacient.fechaCumple %>" id="fecha" maxlength="10" onkeypress="date()" class="datepicker-here" data-position="right top" data-date-format="yyyy/mm/dd" pattern="(?:19|20)[0-9]{2}/(?:(?:0[1-9]|1[0-2])/(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])/(?:30))|(?:(?:0[13578]|1[02])/31))" required/>
+                                    <script>
+                                        $('#fecha').datepicker({
+                                            language: 'es',
+                                            maxDate: new Date()
+                                        });
+                                        $('#fecha').data('datepicker');
+                                    </script>
+                            </div>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input name="sRadio" type="radio" class="with-gap" id="radio106" value="Masculino" checked>
+                                            <label for="radio106">Masculino</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input name="sRadio" type="radio" class="with-gap" id="radio107" value="Femenino">
+                                            <label for="radio107">Femenino</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <button type="submit" class="btn btn-dark">
+                              Actualizar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>
